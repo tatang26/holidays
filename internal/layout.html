@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" class="h-full">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Workshop: Holidays</title>
+
+    <script src="https://unpkg.com/htmx.org@2.0.0"></script>
+    <script src="https://unpkg.com/hyperscript.org@0.9.14"></script>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+    <section class="w-full h-screen flex justify-center items-center bg-neutral-100 *:text-[#323232]">
+        <div class="w-full h-full max-w-[515px] flex flex-col items-center">
+            <div class="w-full flex flex-col items-center bg-white rounded-[48px] px-14 py-10 gap-10 mt-20">
+                <h1 class="text-5xl">Country Holidays</h1>
+
+                <form class="flex justify-center items-center gap-5 w-full" hx-get="/holidays/" hx-target="#holidays" hx-swap="innerHTML">
+                    <select name="countryCode" class="min-w-64 appearance-none rounded-full px-6 py-3 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-black sm:text-sm/6">
+                        <option value="CO">Colombia</option>
+                        <option value="AT">Austria</option>
+                        <option value="DE">Germany</option>
+                        <option value="ES">Spain</option>
+                        <option value="FR">France</option>
+                        <option value="GB">United Kingdom</option>
+                        <option value="IT">Italy</option>
+                        <option value="NL">Netherlands</option>
+                        <option value="NO">Norway</option>
+                        <option value="PL">Poland</option>
+                        <option value="PT">Portugal</option>
+                        <option value="US">United States</option>
+                    </select>
+                    <button type="submit" class="p-3 rounded-full text-white bg-gray-800 hover:bg-black transition-colors ease-in-out duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                        </svg>
+                    </button>
+                </form>
+            </div>
+
+            <div class="relative w-full h-fit overflow-auto">
+                <div class="absolute h-20 top-0 left-0 right-0 w-auto bg-gradient-to-b from-neutral-100 from-45% to-transparent"></div>
+                <ul id="holidays" class="flex flex-col gap-10 h-full overflow-x-hidden overflow-y-scroll px-10 py-20 snap-y snap-proximity [&>li]:snap-center" data-script="on htmx:afterSwap set my scrollTop to 0">
+                    <li role="dialog" class="w-full h-full flex justify-center items-center text-gray-400 italic select-none font-light">
+                        Select a year and country to see the holidays.
+                    </li>
+                </ul>
+                <div class="absolute h-20 bottom-0 left-0 right-0 w-auto bg-gradient-to-t from-neutral-100 from-45% to-transparent"></div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

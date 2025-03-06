@@ -1,0 +1,15 @@
+<%= for (date) in holidays { %>
+    <li role="listitem">
+        <div class="flex items-center flex-nowrap w-full">
+            <div class="flex flex-col items-start w-1/3 xl:w-3/8">
+                <span class="text-sm sm:text-base"><%= date.WeekDay %></span>
+                <span class="text-5xl md:text-7xl"><%= date.Day %></span>
+                <span class="text-5xl md:text-7xl"><%= date.Month %></span>
+            </div>
+            <div class="flex items-center whitespace-break-spaces w-2/3 xl:w-5/8">
+                <div class="h-20 md:h-28 border-r border-r-gray-300 mr-8"></div>
+                <p class="text-xl"><%= date.Name %></p>
+            </div>
+        </div>
+    </li>
+<% } %>
